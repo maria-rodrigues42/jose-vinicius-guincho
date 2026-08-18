@@ -333,13 +333,28 @@ main#main-content {
 /* Serviços Section */
 .servicos {
     position: relative;
-    padding: 8rem var(--pad-x);
-    background: var(--surface-1);
+    padding: 6rem var(--pad-x);
+    background: #0a0a0a;
 }
 
 .servicos-content {
     max-width: var(--max-w);
     margin: 0 auto;
+    position: relative;
+}
+
+.servicos-mapa-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: start;
+}
+
+@media (max-width: 768px) {
+    .servicos-mapa-container {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
 }
 
 .section-title {
@@ -353,9 +368,74 @@ main#main-content {
 
 .servicos-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    grid-template-columns: 1fr 1fr;
     gap: 2rem;
 }
+
+@media (max-width: 768px) {
+    .servicos-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.mapa-container {
+    position: relative;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 12px;
+    padding: 2rem;
+    border: 1px solid rgba(229, 26, 26, 0.1);
+}
+
+.mapa-wrapper {
+    position: relative;
+    width: 100%;
+    height: 400px;
+    overflow: hidden;
+    border-radius: 8px;
+}
+
+.mapa-brasil {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.mapa-highlight-sp {
+    position: absolute;
+    top: 50%;
+    left: 45%;
+    width: 80px;
+    height: 100px;
+    background: #E51A1A;
+    border-radius: 50%;
+    opacity: 0.3;
+    filter: blur(20px);
+    animation: mapa-pulse 2s ease-in-out infinite;
+}
+
+@keyframes mapa-pulse {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 0.6; }
+}
+
+.mapa-caption {
+    text-align: center;
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    color: #b8b6b1;
+}
+
+.tire-marks-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 1;
+    z-index: 5;
+    pointer-events: none;
+}
+
 
 .servico-card {
     padding: 2.5rem 2rem;

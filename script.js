@@ -84,6 +84,74 @@ window.addEventListener('scroll', () => {
     }
 });
 
+// Carousel with GSAP
+const carousel = {
+    currentSlide: 0,
+    slides: document.querySelectorAll('.carousel-slide'),
+    container: document.querySelector('.carousel-container'),
+    prevBtn: document.querySelector('.carousel-prev'),
+    nextBtn: document.querySelector('.carousel-next'),
+    dots: document.querySelectorAll('.carousel-dot'),
+    autoplayTimer: null
+};
+
+function updateCarousel(slideIndex) {
+    const slideWidth = 100;
+    const offset = -slideIndex * slideWidth;
+
+    gsap.to(carousel.container, {
+        x: offset + '%',
+        duration: 0.5,
+        ease: 'power2.inOut'
+    });
+
+    carousel.dots.forEach((dot, index) => {
+        dot.classList.toggle('active', index === slideIndex);
+    });
+
+    carousel.currentSlide = slideIndex;
+}
+
+function nextSlide() {
+    carousel.currentSlide = (carousel.currentSlide + 1) % carousel.slides.length;
+    updateCarousel(carousel.currentSlide);
+    resetAutoplay();
+}
+
+function prevSlide() {
+    carousel.currentSlide = (carousel.currentSlide - 1 + carousel.slides.length) % carousel.slides.length;
+    updateCarousel(carousel.currentSlide);
+    resetAutoplay();
+}
+
+function goToSlide(index) {
+    carousel.currentSlide = index;
+    updateCarousel(carousel.currentSlide);
+    resetAutoplay();
+}
+
+function startAutoplay() {
+    carousel.autoplayTimer = setInterval(() => {
+        nextSlide();
+    }, 5000);
+}
+
+function resetAutoplay() {
+    clearInterval(carousel.autoplayTimer);
+    startAutoplay();
+}
+
+carousel.prevBtn?.addEventListener('click', prevSlide);
+carousel.nextBtn?.addEventListener('click', nextSlide);
+
+carousel.dots.forEach((dot, index) => {
+    dot.addEventListener('click', () => goToSlide(index));
+});
+
+if (carousel.slides.length > 0) {
+    startAutoplay();
+}
+
 // Smooth scroll for anchor links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function(e) {

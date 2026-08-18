@@ -6,6 +6,16 @@ if (window.gsap && window.gsap.registerPlugin) {
     gsap.registerPlugin(ScrollTrigger);
 }
 
+// Nav scroll animation (background blur on scroll)
+window.addEventListener('scroll', () => {
+    const nav = document.getElementById('nav');
+    if (window.scrollY > 50) {
+        nav.classList.add('scrolled');
+    } else {
+        nav.classList.remove('scrolled');
+    }
+});
+
 // Smooth scroll for anchor links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function(e) {

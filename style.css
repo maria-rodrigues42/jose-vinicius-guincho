@@ -640,6 +640,47 @@ main#main-content {
     }
 }
 
+/* About Section */
+.sobre {
+    background: #0a0a0a;
+    padding: 4rem var(--pad-x);
+    text-align: center;
+}
+
+.sobre-text {
+    max-width: 600px;
+    margin: 0 auto;
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: #b8b6b1;
+    opacity: 0;
+}
+
+/* Footer */
+.footer--page {
+    background: #000000;
+    border-top: 1px solid rgba(229, 26, 26, 0.1);
+    padding: 2rem;
+    text-align: center;
+}
+
+.footer-page-inner {
+    max-width: var(--max-w);
+    margin: 0 auto;
+}
+
+.footer-page-bottom {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.footer-page-copy {
+    font-size: 0.9rem;
+    color: #666666;
+    margin: 0;
+}
+
 /* CTA Section */
 .cta-section {
     position: relative;

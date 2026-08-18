@@ -52,7 +52,7 @@ heroTimeline.from('.hero-image', {
     ease: 'power2.out'
 }, 0.3);
 
-// Tire mark animation (scroll-triggered, dynamic fade-out)
+// Register GSAP plugins
 gsap.registerPlugin(ScrollTrigger);
 
 const tireMarkPairs = document.querySelectorAll('.tire-mark-pair');
@@ -82,6 +82,46 @@ window.addEventListener('scroll', () => {
     } else {
         nav.classList.remove('scrolled');
     }
+});
+
+// CTA section animations
+gsap.from('.cta-title .line-inner', {
+    scrollTrigger: {
+        trigger: '.cta-section',
+        start: 'top center',
+        markers: false
+    },
+    opacity: 0,
+    y: 20,
+    duration: 0.8,
+    stagger: 0.15,
+    ease: 'power2.out'
+});
+
+gsap.from('.cta-subtitle', {
+    scrollTrigger: {
+        trigger: '.cta-section',
+        start: 'top center',
+        markers: false
+    },
+    opacity: 0,
+    y: 10,
+    duration: 0.6,
+    delay: 0.3,
+    ease: 'power2.out'
+});
+
+// About section animations
+gsap.from('.sobre-text', {
+    scrollTrigger: {
+        trigger: '.sobre',
+        start: 'top 70%',
+        markers: false
+    },
+    opacity: 0,
+    y: 20,
+    duration: 0.8,
+    ease: 'power2.out'
 });
 
 // Carousel with GSAP

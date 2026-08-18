@@ -6,6 +6,52 @@ if (window.gsap && window.gsap.registerPlugin) {
     gsap.registerPlugin(ScrollTrigger);
 }
 
+// Hero animations (on page load)
+const heroTimeline = gsap.timeline();
+
+// Title lines reveal (staggered)
+heroTimeline.from('.line-inner', {
+    opacity: 0,
+    y: 20,
+    duration: 0.8,
+    stagger: 0.15,
+    ease: 'power2.out'
+}, 0);
+
+// Subtitle reveal
+heroTimeline.from('.hero-subtitle span', {
+    opacity: 0,
+    y: 10,
+    duration: 0.6,
+    stagger: 0.1,
+    ease: 'power2.out'
+}, 0.3);
+
+// Feature items slide-in from left
+heroTimeline.from('.feature-item', {
+    opacity: 0,
+    x: -30,
+    duration: 0.6,
+    stagger: 0.1,
+    ease: 'power2.out'
+}, 0.6);
+
+// CTA button fade-in with scale
+heroTimeline.from('.btn-large', {
+    opacity: 0,
+    y: 20,
+    duration: 0.6,
+    ease: 'power2.out'
+}, 0.9);
+
+// Hero video/image fade-in and scale
+heroTimeline.from('.hero-image', {
+    opacity: 0,
+    scale: 0.95,
+    duration: 0.8,
+    ease: 'power2.out'
+}, 0.3);
+
 // Nav scroll animation (background blur on scroll)
 window.addEventListener('scroll', () => {
     const nav = document.getElementById('nav');

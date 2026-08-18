@@ -52,6 +52,28 @@ heroTimeline.from('.hero-image', {
     ease: 'power2.out'
 }, 0.3);
 
+// Tire mark animation (scroll-triggered, dynamic fade-out)
+gsap.registerPlugin(ScrollTrigger);
+
+const tireMarkPairs = document.querySelectorAll('.tire-mark-pair');
+
+tireMarkPairs.forEach((pair, index) => {
+    gsap.to(pair, {
+        scrollTrigger: {
+            trigger: '.servicos',
+            start: 'top center',
+            end: 'bottom center',
+            scrub: 0.5,  // Smooth lag between scroll and animation
+            markers: false
+        },
+        x: -200,  // Move left (direction of travel)
+        opacity: 0,  // Fade to transparent
+        duration: 1.5,
+        delay: index * 0.3,  // Stagger each pair
+        ease: 'power2.inOut'
+    });
+});
+
 // Nav scroll animation (background blur on scroll)
 window.addEventListener('scroll', () => {
     const nav = document.getElementById('nav');

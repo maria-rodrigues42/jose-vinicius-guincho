@@ -436,6 +436,25 @@ main#main-content {
     pointer-events: none;
 }
 
+.tire-mark-pair {
+    opacity: 1;
+}
+
+.tire-mark {
+    stroke-linecap: round;
+    transition: opacity 0.3s ease;
+}
+
+@media (max-width: 768px) {
+    .tire-marks-bg {
+        opacity: 0.5;
+    }
+
+    .tire-mark {
+        stroke-width: 8 !important;
+    }
+}
+
 
 .servico-card {
     padding: 2.5rem 2rem;

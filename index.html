@@ -153,7 +153,7 @@
                     </div>
                 </div>
 
-                <!-- Tire marks SVG background (for Task 7 animation) -->
+                <!-- Tire marks SVG background (animated with GSAP) -->
                 <svg class="tire-marks-bg" viewBox="0 0 1920 1080" preserveAspectRatio="none">
                     <defs>
                         <linearGradient id="tire-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -161,6 +161,24 @@
                             <stop offset="100%" stop-color="#E51A1A" stop-opacity="0"/>
                         </linearGradient>
                     </defs>
+
+                    <!-- Tire mark pair 1 -->
+                    <g class="tire-mark-pair" data-index="0">
+                        <line class="tire-mark tire-left" x1="1800" y1="50" x2="200" y2="850" stroke="url(#tire-gradient)" stroke-width="12" stroke-linecap="round"/>
+                        <line class="tire-mark tire-right" x1="1850" y1="50" x2="250" y2="850" stroke="url(#tire-gradient)" stroke-width="12" stroke-linecap="round"/>
+                    </g>
+
+                    <!-- Tire mark pair 2 (staggered) -->
+                    <g class="tire-mark-pair" data-index="1">
+                        <line class="tire-mark tire-left" x1="1800" y1="100" x2="200" y2="900" stroke="url(#tire-gradient)" stroke-width="12" stroke-linecap="round"/>
+                        <line class="tire-mark tire-right" x1="1850" y1="100" x2="250" y2="900" stroke="url(#tire-gradient)" stroke-width="12" stroke-linecap="round"/>
+                    </g>
+
+                    <!-- Tire mark pair 3 (staggered) -->
+                    <g class="tire-mark-pair" data-index="2">
+                        <line class="tire-mark tire-left" x1="1800" y1="150" x2="200" y2="950" stroke="url(#tire-gradient)" stroke-width="12" stroke-linecap="round"/>
+                        <line class="tire-mark tire-right" x1="1850" y1="150" x2="250" y2="950" stroke="url(#tire-gradient)" stroke-width="12" stroke-linecap="round"/>
+                    </g>
                 </svg>
             </div>
         </section>

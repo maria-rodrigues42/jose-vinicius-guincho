@@ -186,6 +186,25 @@ main#main-content {
     will-change: opacity, transform;
 }
 
+/* Performance optimizations */
+.line-inner,
+.feature-item,
+.servico-card,
+.btn-primary,
+.carousel-slide,
+.tire-mark-pair {
+    will-change: opacity, transform;
+}
+
+/* GPU acceleration */
+.hero-image,
+.mapa-container,
+.carousel-container,
+.tire-mark-pair {
+    transform: translateZ(0);
+    backface-visibility: hidden;
+}
+
 /* Blobs */
 .hero-blob {
     position: absolute;

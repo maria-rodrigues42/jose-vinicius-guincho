@@ -75,55 +75,6 @@ tireMarkPairs.forEach((pair, index) => {
 });
 
 // Nav scroll animation (background blur on scroll)
-window.addEventListener('scroll', () => {
-    const nav = document.getElementById('nav');
-    if (window.scrollY > 50) {
-        nav.classList.add('scrolled');
-    } else {
-        nav.classList.remove('scrolled');
-    }
-});
-
-// CTA section animations
-gsap.from('.cta-title .line-inner', {
-    scrollTrigger: {
-        trigger: '.cta-section',
-        start: 'top center',
-        markers: false
-    },
-    opacity: 0,
-    y: 20,
-    duration: 0.8,
-    stagger: 0.15,
-    ease: 'power2.out'
-});
-
-gsap.from('.cta-subtitle', {
-    scrollTrigger: {
-        trigger: '.cta-section',
-        start: 'top center',
-        markers: false
-    },
-    opacity: 0,
-    y: 10,
-    duration: 0.6,
-    delay: 0.3,
-    ease: 'power2.out'
-});
-
-// About section animations
-gsap.from('.sobre-text', {
-    scrollTrigger: {
-        trigger: '.sobre',
-        start: 'top 70%',
-        markers: false
-    },
-    opacity: 0,
-    y: 20,
-    duration: 0.8,
-    ease: 'power2.out'
-});
-
 // Carousel with GSAP
 const carousel = {
     currentSlide: 0,
@@ -136,8 +87,8 @@ const carousel = {
 };
 
 function updateCarousel(slideIndex) {
-    const slideWidth = 100;
-    const offset = -slideIndex * slideWidth;
+    const slidePercentage = 100;
+    const offset = -slideIndex * slidePercentage;
 
     gsap.to(carousel.container, {
         x: offset + '%',
@@ -205,3 +156,32 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         }
     });
 });
+
+// Touch events for carousel swipe
+let touchStartX = 0;
+let touchEndX = 0;
+
+if (carousel.container) {
+    carousel.container.addEventListener('touchstart', e => {
+        touchStartX = e.changedTouches[0].screenX;
+        carousel.container.classList.add('dragging');
+        clearInterval(carousel.autoplayTimer);
+    }, { passive: true });
+
+    carousel.container.addEventListener('touchend', e => {
+        touchEndX = e.changedTouches[0].screenX;
+        carousel.container.classList.remove('dragging');
+        handleSwipe();
+        startAutoplay();
+    }, { passive: true });
+}
+
+function handleSwipe() {
+    const threshold = 50; // minimum pixels to be considered a swipe
+    if (touchEndX < touchStartX - threshold) {
+        nextSlide();
+    }
+    if (touchEndX > touchStartX + threshold) {
+        prevSlide();
+    }
+}

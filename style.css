@@ -1548,10 +1548,10 @@ main#main-content {
     width: 100%;
     max-width: 350px;
     margin: 2rem auto;
-    font-size: 1.1rem;
-    font-weight: bold;
+    font-size: 0.95rem;
+    font-weight: 700;
     text-transform: uppercase;
-    padding: 1.2rem 2rem;
+    padding: 1rem 1.5rem;
     border-radius: 50px;
     text-decoration: none;
     box-shadow: 0 10px 25px rgba(37, 211, 102, 0.4);
@@ -1586,4 +1586,14 @@ main#main-content {
   opacity: 1;
   -webkit-mask-position: 0 0;
   mask-position: 0 0;
+}
+
+@media (max-width: 400px) {
+    .btn-whatsapp {
+        font-size: 0.85rem;
+        padding: 0.8rem 1.2rem;
+    }
+    .btn-whatsapp .text {
+        gap: 0.3rem;
+    }
 }

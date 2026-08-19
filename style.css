@@ -125,6 +125,9 @@ main#main-content {
     color: var(--white-pure);
     background: var(--orange-primary);
     padding: 1rem 2.2rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     border-radius: 6px;
     text-decoration: none;
     border: none;
@@ -660,17 +663,46 @@ main#main-content {
 /* CTA Section */
 .cta-section {
     position: relative;
-    padding: 8rem var(--pad-x);
-    background: linear-gradient(135deg, var(--red-primary) 0%, #b51414 100%);
+    padding: 6rem var(--pad-x);
+    background: var(--bg-main); /* Match main background */
     text-align: center;
+}
+
+.cta-card {
+    max-width: 900px;
+    margin: 0 auto;
+    position: relative;
+    padding: 5rem 2rem;
+    background: var(--red-primary);
+    border-radius: 24px;
+    box-shadow: 0 20px 40px rgba(223, 48, 28, 0.2);
     overflow: hidden;
 }
+
+.cta-glow {
+    position: absolute;
+    top: -50%;
+    left: -10%;
+    width: 400px;
+    height: 400px;
+    background: var(--orange-primary);
+    border-radius: 50%;
+    filter: blur(100px);
+    opacity: 0.7;
+    z-index: 0;
+    pointer-events: none;
+}
+
 
 .cta-content {
     max-width: var(--max-w);
     margin: 0 auto;
     position: relative;
     z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
 }
 
 .cta-title {
@@ -1461,8 +1493,8 @@ main#main-content {
     position: fixed;
     bottom: 30px;
     right: 30px;
-    width: 60px;
-    height: 60px;
+    width: 70px;
+    height: 70px;
     background-color: #25D366;
     color: white;
     border-radius: 50%;
@@ -1482,12 +1514,76 @@ main#main-content {
     .floating-whatsapp {
         bottom: 20px;
         right: 20px;
-        width: 50px;
-        height: 50px;
+        width: 64px;
+        height: 64px;
     }
     
     .floating-whatsapp svg {
-        width: 28px;
-        height: 28px;
+        width: 36px;
+        height: 36px;
     }
+}
+
+.phone-link {
+    color: var(--white-pure) !important;
+    text-decoration: none !important;
+    font-size: 1.2rem;
+}
+.phone-link:hover {
+    text-decoration: underline !important;
+}
+.cta-phone {
+    margin-top: 1rem;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+
+.btn-whatsapp {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    background: #25D366;
+    color: var(--white-pure);
+    width: 100%;
+    max-width: 350px;
+    margin: 2rem auto;
+    font-size: 1.1rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    padding: 1.2rem 2rem;
+    border-radius: 50px;
+    text-decoration: none;
+    box-shadow: 0 10px 25px rgba(37, 211, 102, 0.4);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.btn-whatsapp:hover {
+    background: #128C7E;
+    transform: translateY(-3px);
+    box-shadow: 0 15px 30px rgba(37, 211, 102, 0.5);
+    color: var(--white-pure);
+}
+
+.btn-whatsapp:active {
+    transform: translateY(0);
+}
+
+/* Ensure text inside btn-whatsapp is white */
+.btn-whatsapp .text {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--white-pure);
+}
+
+.btn-whatsapp:hover .tire-track {
+  opacity: 1;
+  -webkit-mask-position: 0 0;
+  mask-position: 0 0;
 }
